@@ -1,0 +1,13 @@
+<template>
+        <template for:each={projects.data} for:item="project">
+            <a
+                href="#"
+                key={project.ID_PROGETTO__c}
+                data-project-id={project.ID_PROGETTO__c}
+                onclick={itemClick}
+            >
+                <c-project-item project={project}></c-project-item>
+            </a>
+        </template>
+    </template>
+    

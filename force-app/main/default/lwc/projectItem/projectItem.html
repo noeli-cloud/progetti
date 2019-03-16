@@ -1,0 +1,55 @@
+<template>
+        
+        <div class="c-container">
+                <lightning-layout multiple-rows="true" class="commit-status" > 
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="1page-section 1page-header">
+                            <lightning-layout>
+                            <lightning-layout-item size="1" >
+                                <lightning-icon size="xx-small"  icon-name="action:approval" alternative-text="Approved" ></lightning-icon>
+                            </lightning-layout-item>
+                            <lightning-layout-item >
+                                <strong>
+                                    {project.Name}
+                                </strong>
+                                 </lightning-layout-item>
+                            </lightning-layout> 
+                        </div>
+                    </lightning-layout-item>
+    
+                    <lightning-layout-item padding="around-small" size="12">
+                        <lightning-layout>
+                            <lightning-layout-item padding="1around-small" size="6">
+                                <div class="1page-section 1page-right">
+                                    <h2> {project.Category__c}</h2>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="1around-small" size="6">
+                                <div class="1page-section 1page-main">
+                                    <h2> {project.RecordTypeId}</h2>                              
+                                </div>
+                            </lightning-layout-item>
+                           
+                        </lightning-layout>
+                    </lightning-layout-item>
+    
+                     <lightning-layout-item padding="around-small" size="12">
+                        <lightning-layout>
+                            <lightning-layout-item padding="1around-small" size="6">
+                                <div class="1page-section 1page-right">
+                                    <h2>{project.Country__c}</h2>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="1around-small" size="6">
+                                <div class="1page-section 1page-main">
+                                    <h2>{project.OwnerId}></h2>                              
+                                </div>
+                            </lightning-layout-item>
+                           
+                        </lightning-layout>
+                    </lightning-layout-item>
+                   
+                </lightning-layout>
+            </div>
+        
+    </template>
