@@ -1,0 +1,19 @@
+.c-container {
+    background-color: white;
+    border-bottom: 1px solid #80808024;
+    padding: 1px 2px 5px 0px;
+}
+
+.c-container:hover {
+    cursor: pointer;
+        background-color: #dad4d447;
+
+}
+
+.p-data {
+    padding: 5px 0 0 30px;
+}
+
+.p-header {
+    padding: 5px 0 0  6px;
+}
