@@ -1,11 +1,18 @@
 <template>
 <div class="c-container">
-     <lightning-record-form
-        record-id="a031i0000056TFUAA2"
-        object-api-name="Progetto__c"
-        layout-type="Full"
-        mode="view"
-        columns="2">
-    </lightning-record-form>
+    <template if:true={projectId}>
+            <lightning-record-form
+            record-id={projectId}
+            object-api-name="Progetto__c"
+            layout-type="Full"
+            mode={mode}
+            columns="2">
+        </lightning-record-form>
+    </template>
+
+    <template if:false={projectId}>
+           NO PROJECT SELECTED
+    </template>
+   
 </div>
 </template>

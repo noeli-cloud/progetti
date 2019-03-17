@@ -1,23 +1,22 @@
 import { LightningElement, track, wire } from 'lwc';
 import getProjects from '@salesforce/apex/ProjectController.getProjects';
+import { registerListener, unregisterAllListeners, fireEvent } from 'c/pubsub';
+import { CurrentPageReference } from 'lightning/navigation';
+
 
 export default class ProjectItemList extends LightningElement {
 
 
-    @track searchKey="";
+    @wire(CurrentPageReference) pageRef;
+
+    @track searchKey = "";
 
     @wire(getProjects, { searchKey: '$searchKey' })
     projects;
 
     itemClick(event) {
-        // 1. Prevent default behavior of anchor tag click which is to navigate to the href url
-        event.preventDefault();
-        // 2. Create a custom event that bubbles. Read about event best practices at http://developer.salesforce.com/docs/component-library/documentation/lwc/lwc.events_best_practices
-        const selectEvent = new CustomEvent('projectselected', {
-            detail: { projectId: event.currentTarget.dataset.projectId }
-        });
-        // 3. Fire the custom event
-        this.dispatchEvent(selectEvent);
+
+        fireEvent(this.pageRef, 'projectselected', event.currentTarget.dataset.projectId);
     }
 
     search(event) {

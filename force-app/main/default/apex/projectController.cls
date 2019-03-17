@@ -4,8 +4,8 @@ public with sharing class projectController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<Progetto__c> getProject(String prjId) {
-     return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c where Id  = :prjId];
+    public static Progetto__c getProject(String projectId) {
+     return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c where Id  = :projectId];
     }
 
     @AuraEnabled(cacheable=true)
