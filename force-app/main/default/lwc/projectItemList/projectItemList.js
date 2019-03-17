@@ -1,9 +1,14 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import getProjects from '@salesforce/apex/ProjectController.getProjects';
 
 export default class ProjectItemList extends LightningElement {
 
-    @wire(getProjects) projects;
+
+    @track searchKey="";
+
+    @wire(getProjects, { searchKey: '$searchKey' })
+    projects;
+
     itemClick(event) {
         // 1. Prevent default behavior of anchor tag click which is to navigate to the href url
         event.preventDefault();
@@ -14,4 +19,9 @@ export default class ProjectItemList extends LightningElement {
         // 3. Fire the custom event
         this.dispatchEvent(selectEvent);
     }
+
+    search(event) {
+        this.searchKey = event.target.value;
+    }
+
 }

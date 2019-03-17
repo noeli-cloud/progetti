@@ -24,9 +24,10 @@
                                     <h2> {project.Category__c}</h2>
                                 </div>
                             </lightning-layout-item>
-                            <lightning-layout-item  size="6">
+                            <lightning-layout-item  size="6"
+                            onclick={click} >
                                 <div  >
-                                    <h2> {project.RecordTypeId}</h2>                              
+                                    <h2>{recordTypeName}</h2>                                                             
                                 </div>
                             </lightning-layout-item>
                            
