@@ -14,8 +14,8 @@
         <template for:each={projects.data} for:item="project">
            
             <c-project-item
-            key={project.ID_PROGETTO__c}
-            data-project-id={project.ID_PROGETTO__c}
+            key={project.Id}
+            data-project-id={project.Id}
             onclick={itemClick}            
             project={project}></c-project-item>
         

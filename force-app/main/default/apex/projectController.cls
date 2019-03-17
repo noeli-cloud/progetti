@@ -5,18 +5,18 @@ public with sharing class projectController {
 
     @AuraEnabled(cacheable=true)
     public static List<Progetto__c> getProject(String prjId) {
-     return [SELECT ID_PROGETTO__c, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c where ID_PROGETTO__c  = :prjId];
+     return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c where Id  = :prjId];
     }
 
     @AuraEnabled(cacheable=true)
     public static List<Progetto__c> getProjects(String searchKey) {
 
     if (String.isBlank(searchKey)) {
-        return [SELECT ID_PROGETTO__c, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c  ];
+        return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c  ];
     }
     String key = '%' + searchKey + '%';   
 
-    return [SELECT ID_PROGETTO__c, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c WHERE Name LIKE :key  ];
+    return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c WHERE Name LIKE :key  ];
     }
 
     @AuraEnabled (cacheable=true)
