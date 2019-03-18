@@ -11,6 +11,15 @@
             ],
             "c/project-item-list": [
                 "projectItemList/projectItemList.js"
+            ],
+            "c/project-item-new": [
+                "projectItemNew/projectItemNew.js"
+            ],
+            "c/projects-import": [
+                "projectsImport/projectsImport.js"
+            ],
+            "c/pubsub": [
+                "pubsub/pubsub.js"
             ]
         }
     },

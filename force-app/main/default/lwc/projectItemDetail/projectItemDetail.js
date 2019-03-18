@@ -13,7 +13,7 @@ export default class ProjectItemDetail extends LightningElement {
 
     connectedCallback() {
         registerListener('projectselected', this.handleProjectSelected, this);
-        alert('2.1')
+        alert('3.16')
     }
 
     disconnectedCallback() {
