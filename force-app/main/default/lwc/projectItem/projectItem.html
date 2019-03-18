@@ -1,56 +1,60 @@
 <template>
-        
-        <div class="c-container">
-                <lightning-layout multiple-rows="true" class="commit-status" > 
-                    <lightning-layout-item class="p-header"  size="12">
-                        <div  >
-                            <lightning-layout>
-                            <lightning-layout-item size="1" >
-                                <lightning-icon size="xx-small"  icon-name="action:approval" alternative-text="Approved" ></lightning-icon>
-                            </lightning-layout-item>
-                            <lightning-layout-item >
-                                <strong>
-                                    {project.Name}
-                                </strong>
-                                 </lightning-layout-item>
-                            </lightning-layout> 
-                        </div>
-                    </lightning-layout-item>
-    
-                    <lightning-layout-item  class="p-data" size="12">
-                        <lightning-layout>
-                            <lightning-layout-item  size="6">
-                                <div >
-                                    <h2> {project.Category__c}</h2>
-                                </div>
-                            </lightning-layout-item>
-                            <lightning-layout-item  size="6"
-                            onclick={click} >
-                                <div  >
-                                    <h2>{recordTypeName}</h2>                                                             
-                                </div>
-                            </lightning-layout-item>
-                           
-                        </lightning-layout>
-                    </lightning-layout-item>
-    
-                     <lightning-layout-item class="p-data"  size="12">
-                        <lightning-layout>
-                            <lightning-layout-item  size="6">
-                                <div >
-                                    <h2>{project.Country__c}</h2>
-                                </div>
-                            </lightning-layout-item>
-                            <lightning-layout-item  size="6">
-                                <div  >
-                                    <h2>{project.OwnerId}></h2>                              
-                                </div>
-                            </lightning-layout-item>
-                           
-                        </lightning-layout>
-                    </lightning-layout-item>
-                   
-                </lightning-layout>
+    <div class="slds-card container">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+        <span class="slds-icon_container slds-icon-standard-contact" title="Project">
+            <svg class="slds-icon slds-icon_small" aria-hidden="true">
+            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+            </svg>
+        <span class="slds-assistive-text">project Name</span>
+        </span>
+        </div>
+        <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+        <span class="slds-card__header-link slds-truncate">{project.Name}</span>
+        </h2>
+        </div>
+        </header>
+        </div>
+        <div class="slds-card__body">
+           <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid">
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Name">Category</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Company">Record Type</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Title">Country</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Email">Owner</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="slds-hint-parent">
+          
+          <td role="gridcell">
+            <div class="slds-truncate" title="Company One">{project.Category__c}</div>
+          </td>
+          <td role="gridcell">
+            <div class="slds-truncate" title="Director of Operations">{recordTypeName}</div>
+          </td>
+          <td role="gridcell">
+            <div class="slds-truncate" title="adam@company.com">{project.OwnerId}</div>
+          </td>
+          <th scope="row">
+            <div class="slds-truncate" title="Amy Choi">
+              <a href="javascript:void(0);" tabindex="-1">{project.OwnerId}</a>
             </div>
-        
-    </template>
+          </th>
+        </tr>
+      </tbody>
+    </table>  
+        </div>
+    </div>
+</template>

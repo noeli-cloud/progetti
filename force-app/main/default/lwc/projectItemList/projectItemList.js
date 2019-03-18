@@ -1,5 +1,5 @@
 import { LightningElement, track, wire } from 'lwc';
-import getProjects from '@salesforce/apex/ProjectController.getProjects';
+import getProjects from '@salesforce/apex/projectController.getProjects';
 import {  fireEvent } from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
 

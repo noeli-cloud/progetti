@@ -1,7 +1,7 @@
 import { LightningElement, wire, api/*, track*/ } from 'lwc';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 // import ACCOUNT_OBJECT from '@salesforce/schema/Progetto__c';
-import getRecordTypeName from '@salesforce/apex/ProjectController.getRecordTypeName';
+import getRecordTypeName from '@salesforce/apex/projectController.getRecordTypeName';
 
 
 export default class ProjectItem extends LightningElement {

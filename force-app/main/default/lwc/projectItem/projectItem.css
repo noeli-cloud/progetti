@@ -1,10 +1,10 @@
 .c-container {
     background-color: white;
-    border-bottom: 1px solid #80808024;
-    padding: 1px 2px 5px 0px;
+    /* border-bottom: 1px solid #80808024;
+    padding: 1px 2px 5px 0px; */
 }
 
-.c-container:hover {
+.slds-card:hover {
     cursor: pointer;
         background-color: #dad4d447;
 
