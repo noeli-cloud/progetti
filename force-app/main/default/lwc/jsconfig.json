@@ -6,9 +6,6 @@
             "c/project-item": [
                 "projectItem/projectItem.js"
             ],
-            "c/project-item-detail": [
-                "projectItemDetail/projectItemDetail.js"
-            ],
             "c/project-item-list": [
                 "projectItemList/projectItemList.js"
             ],
@@ -20,6 +17,12 @@
             ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
+            ],
+            "c/new-button": [
+                "newButton/newButton.js"
+            ],
+            "c/project-item-detail": [
+                "projectItemDetail/projectItemDetail.js"
             ]
         }
     },

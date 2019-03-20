@@ -3,7 +3,7 @@
     <div class="flexipageComponent list" data-aura-class="flexipageComponent">
         <div class="tabset slds-tabs_card uiTabset--base uiTabset--default uiTabset--dense uiTabset flexipageTabset">
             <lightning-tabset active-tab-value="one">
-                <lightning-tab label="ALL Projects" value="one">                      
+                <lightning-tab label="Projects" value="one">                      
                     <!-- <c-project-item-new></c-project-item-new> -->
                     
                     <div class="slds-m-around_medium">
@@ -14,7 +14,7 @@
                             label="Search"
                         ></lightning-input>
                     </div>
-                    <div class="slds-scrollable_y" style="height: 50rem; ">
+                    <div class="slds-scrollable_y" style="height: 30rem; ">
                         <template for:each={projects.data} for:item="project">
                             <c-project-item
                             key={project.Id}

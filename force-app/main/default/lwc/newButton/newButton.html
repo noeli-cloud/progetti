@@ -1,0 +1,108 @@
+<template>
+    <div class="flexipageHeader slds-page-header uiBlock oneAnchorHeader 1slds-theme_default">
+        <div class="bLeft"></div>
+        <div class="bRight">
+            <lightning-button variant="neutral" class="slds-m-left_x-small" label="New Project"
+                onclick={openSelectRecordTypeModalHandler}>
+            </lightning-button>
+
+        </div>
+
+        <!-- select record type -->
+
+        <template if:true={openSelectRecordTypeModal}>
+            <div class="demo-only" style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true"
+                    aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={closeSelectRecordTypeModalHandler}>
+                                <lightning-icon icon-name="utility:close" size="medium">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate">
+                                Select Project Type</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium " style="height: 200px;"
+                            id="modal-content-id-4">
+
+                            <lightning-combobox name="progress" label="Project Type" value=""
+                                placeholder="Select Progress" options={recordTypeOptions} onchange={recordTypeSelected}
+                                required></lightning-combobox>
+
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button label="Cancel" variant="neutral"
+                                onclick={closeSelectRecordTypeModalHandler}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <lightning-button label="Next" variant="brand" onclick={openSelectInsertMethodModalHandler}>
+                            </lightning-button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>
+
+
+        <!--select insert method -->
+
+        <template if:true={openSelectInsertMethodModal}>
+            <div class="demo-only" style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
+                    aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={closeSelectInsertMethodModalHandler}>
+                                <lightning-icon icon-name="utility:close" size="medium">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
+                                Select Insert Method
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" style="height: 200px;"
+                            id="modal-content-id-2">
+                            <lightning-combobox name="progress" label="Project Type" value=""
+                                placeholder="Select Progress" options={insertMethodOptions}
+                                onchange={insertMethodSelected} required></lightning-combobox>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button label="Cancel" variant="neutral"
+                                onclick={closeSelectInsertMethodModalHandler}></lightning-button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <lightning-button label="Next" variant="brand" onclick={openNewOrImportHandler}>
+                            </lightning-button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>
+
+
+
+        <!-- import -->
+
+        <template if:true={openImportModal}>
+            <c-projects-import 
+            record-type-id={recordTypeId}
+            onclose={closeImportHandler}
+            ></c-projects-import>
+        </template>
+
+
+        <!-- form new -->
+
+        <template if:true={openNewProjectModal}>
+          <c-project-item-new 
+          record-type-id={recordTypeId}
+          onclose={closeNewHandler}
+          ></c-project-item-new>
+
+        </template>
+    </div>
+</template>

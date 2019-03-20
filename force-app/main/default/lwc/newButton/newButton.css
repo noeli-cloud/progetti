@@ -1,0 +1,13 @@
+.c-container{
+    background-color: white
+}
+
+.bRight {
+    float: right;
+}
+.bLeft{
+    float: left;
+}
+header.flexipageHeader.slds-page-header.uiBlock.oneAnchorHeader {
+    display: none;
+}
