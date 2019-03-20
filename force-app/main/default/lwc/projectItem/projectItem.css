@@ -1,7 +1,6 @@
 .c-container {
     background-color: white;
-    /* border-bottom: 1px solid #80808024;
-    padding: 1px 2px 5px 0px; */
+    margin-bottom: 5px; 
 }
 
 .slds-card:hover {

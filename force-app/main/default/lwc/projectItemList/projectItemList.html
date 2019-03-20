@@ -1,26 +1,33 @@
 <template>
-     <div class="list">
-       
-        <!-- <c-project-item-new></c-project-item-new> -->
-            
-            <div class="slds-m-around_medium">
-                    <lightning-input
-                        type="search"
-                        onchange={search}
-                        class="slds-m-bottom_small"
-                        label="Search"
-                    ></lightning-input>
-        
-                </div>
-        
-        <template for:each={projects.data} for:item="project">
-           
-            <c-project-item
-            key={project.Id}
-            data-project-id={project.Id}
-            onclick={itemClick}            
-            project={project}></c-project-item>
-        
-    </template>
+    <!-- <div class="flexipageComponent list" data-aura-class="flexipageComponent"> -->
+    <div class="flexipageComponent list" data-aura-class="flexipageComponent">
+        <div class="tabset slds-tabs_card uiTabset--base uiTabset--default uiTabset--dense uiTabset flexipageTabset">
+            <lightning-tabset active-tab-value="one">
+                <lightning-tab label="ALL Projects" value="one">                      
+                    <!-- <c-project-item-new></c-project-item-new> -->
+                    
+                    <div class="slds-m-around_medium">
+                        <lightning-input
+                            type="search"
+                            onchange={search}
+                            class="slds-m-bottom_small"
+                            label="Search"
+                        ></lightning-input>
+                    </div>
+                    <div class="slds-scrollable_y" style="height: 50rem; ">
+                        <template for:each={projects.data} for:item="project">
+                            <c-project-item
+                            key={project.Id}
+                            data-project-id={project.Id}
+                            onclick={itemClick}            
+                            project={project}></c-project-item>
+                        
+                        </template>
+                    </div>
+                </lightning-tab>
+            </lightning-tabset>
+        </div>
      </div>
+
+     
     </template>
