@@ -1,6 +1,7 @@
 import { LightningElement, track, wire } from 'lwc';
 import insertRecords from '@salesforce/apex/NC_ProgettiEnel.insertRecords';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class ProjectsImport extends LightningElement {
 
@@ -135,7 +136,14 @@ export default class ProjectsImport extends LightningElement {
         return rc && rc.label || ''
     }
 
-    handleSuccess(){
+    handleSuccess(event){
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Success',
+                message: event.detail.apiName + ' created.',
+                variant: 'success',
+            }),
+        );
         this.closeNewHandler()
     }
 
