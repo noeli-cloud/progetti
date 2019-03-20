@@ -12,7 +12,7 @@ export default class ProjectsImport extends LightningElement {
 
     @track saving = false;
     @track strfromJson;
-    @track resordTYpeId;
+    @track recordTypeId;
     @track insertMethod;
     @track objectInfo;
     @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
@@ -112,7 +112,7 @@ export default class ProjectsImport extends LightningElement {
     }
 
     saveImportMethod() {
-        insertRecords({ strfromJson: this.strfromJson })
+        insertRecords({ strfromJson: this.strfromJson, recortypeId: this.recordTypeId })
             .then(result => {
                 console.log(result)
                 this.closeImportHandler();
@@ -124,14 +124,14 @@ export default class ProjectsImport extends LightningElement {
 
     }
     recordTypeSelected(event) {
-        this.resordTYpeId = event.currentTarget.value
+        this.recordTypeId = event.currentTarget.value
     }
     insertMethodSelected(event) {
         this.insertMethod = event.currentTarget.value
     }
 
     get recordTypeName() {
-        let rc = this.recordTypeOptions.find(o => o.value === this.resordTYpeId)
+        let rc = this.recordTypeOptions.find(o => o.value === this.recordTypeId)
         return rc && rc.label || ''
     }
 }
