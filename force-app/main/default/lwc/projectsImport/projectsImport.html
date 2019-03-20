@@ -118,7 +118,8 @@
                             </div>
                         </div>
                         <footer class="slds-modal__footer">
-                            <lightning-button label="Cancel" variant="neutral" onclick={closeImportHandler}></lightning-button>
+                            <lightning-button label="Cancel" variant="neutral" onclick={closeImportHandler}>
+                            </lightning-button>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <lightning-button label="Save" variant="brand" onclick={saveImportMethod}>
                             </lightning-button>
@@ -151,8 +152,10 @@
                         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-5">
                             <div class="slds-p-around_medium lgc-bg">
                                 <div class="new-project">
-                                    <lightning-record-form record-type-id={recordTypeId} object-api-name="Progetto__c"
-                                        layout-type="Full" mode="edit" columns="2">
+                                    <lightning-record-form record-type-id={recordTypeId}
+                                        object-api-name="Progetto__c" layout-type="Full"
+                                         onsuccess={handleSuccess} oncancel={handleCancel}
+                                        columns="2">
                                     </lightning-record-form>
                                 </div>
                             </div>

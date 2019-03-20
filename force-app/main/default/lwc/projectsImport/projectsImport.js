@@ -134,4 +134,12 @@ export default class ProjectsImport extends LightningElement {
         let rc = this.recordTypeOptions.find(o => o.value === this.recordTypeId)
         return rc && rc.label || ''
     }
+
+    handleSuccess(){
+        this.closeNewHandler()
+    }
+
+    handleCancel(){
+        this.closeNewHandler()
+    }
 }
