@@ -1,7 +1,7 @@
 import { LightningElement, track, wire } from 'lwc';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 
-export default class ProjectsImport extends LightningElement {
+export default class NewButton extends LightningElement {
 
 
     insertMethodOptions = [

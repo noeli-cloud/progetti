@@ -1,21 +1,19 @@
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, api, wire } from 'lwc';
 import insertRecords from '@salesforce/apex/NC_ProgettiEnel.insertRecords';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class ProjectsImport extends LightningElement {
 
+    @api recordTypeId;
 
-    insertMethodOptions = [
-        { label: "Manual Insert", value: "manual" },
-        { label: "Insert from file", value: "auto" }
-    ]
 
-    @track saving = false;
+    @track fileName;
     @track strfromJson;
-    @track recordTypeId;
-    @track insertMethod;
-    @track objectInfo;
+
+    objectInfo;
+    recordTypeOptions=[];
+
     @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
     getObjectInfo({ data, error }) {
         if (data) {
@@ -26,14 +24,12 @@ export default class ProjectsImport extends LightningElement {
 
     }
 
-    // @wire(insertRecords, { strfromJson: '$strfromJson' })
-    // insertRecordsCallback({ data, error }) {
-    //     debugger;
-    // }
 
     handleFileChange(event) {
         const input = event.target;
-
+        const file = input.files[0]
+        this.fileName = file.name;
+        debugger
         const reader = new FileReader();
         reader.onload = () => {
             const text = reader.result;
@@ -49,7 +45,7 @@ export default class ProjectsImport extends LightningElement {
             this.strfromJson = JSON.stringify(data)
 
         };
-        reader.readAsText(input.files[0]);
+        reader.readAsText(file);
     }
 
     csvToObject(csv) {
@@ -71,64 +67,28 @@ export default class ProjectsImport extends LightningElement {
     }
 
 
-    @track openSelectRecordTypeModal = false;
-    @track openSelectInsertMethodModal = false;
-    @track openImportModal = false
-    @track openNewProjectModal = false
-
-    openSelectRecordTypeModalHandler() {
-        this.openSelectRecordTypeModal = true
-    }
-
-    closeSelectRecordTypeModalHandler() {
-        this.openSelectRecordTypeModal = false
-    }
-    openSelectInsertMethodModalHandler() {
-        this.closeSelectRecordTypeModalHandler()
-        this.openSelectInsertMethodModal = true
-    }
-    closeSelectInsertMethodModalHandler() {
-        this.openSelectInsertMethodModal = false
-    }
-    openNewOrImportHandler() {
-        this.closeSelectInsertMethodModalHandler()
-        if (this.insertMethod === 'manual') {
-            this.openNewHandler()
-        } else {
-            this.openImportHandler()
-        }
-    }
-
-    openNewHandler() {
-        this.openNewProjectModal = true
-    }
-    closeNewHandler() {
-        this.openNewProjectModal = false
-    }
-    openImportHandler() {
-        this.openImportModal = true
-    }
-    closeImportHandler() {
-        this.openImportModal = false
-    }
-
     saveImportMethod() {
         insertRecords({ strfromJson: this.strfromJson, recortypeId: this.recordTypeId })
             .then(result => {
-                console.log(result)
-                this.closeImportHandler();
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: 'Projects Imported.',
+                        variant: 'success',
+                    }),
+                );
+                this.emitClose()
             })
             .catch(error => {
-                alert(error)
-                debugger
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Error',
+                        message: 'An Error Occurred when importing.',
+                        variant: 'error',
+                    }),
+                );
             })
 
-    }
-    recordTypeSelected(event) {
-        this.recordTypeId = event.currentTarget.value
-    }
-    insertMethodSelected(event) {
-        this.insertMethod = event.currentTarget.value
     }
 
     get recordTypeName() {
@@ -136,18 +96,10 @@ export default class ProjectsImport extends LightningElement {
         return rc && rc.label || ''
     }
 
-    handleSuccess(event){
-        this.dispatchEvent(
-            new ShowToastEvent({
-                title: 'Success',
-                message: event.detail.apiName + ' created.',
-                variant: 'success',
-            }),
-        );
-        this.closeNewHandler()
+    emitClose() {
+        this.dispatchEvent(new CustomEvent('close'));
     }
-
-    handleCancel(){
-        this.closeNewHandler()
+    handleCancel() {
+        this.emitClose()
     }
 }
