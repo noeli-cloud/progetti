@@ -23,8 +23,8 @@ export default class ProjectItemNew extends LightningElement {
             debugger
             this.options = data.map(d => {
                 return {
-                    label: d.Name,//+ (d.CODICE_SDG__c && d.CODICE_SDG__c),
-                    value: d.Name,
+                    label: d.CODICE_SDG__c,//+ (d.CODICE_SDG__c && d.CODICE_SDG__c),
+                    value: d.Id,
                 }
             })
 

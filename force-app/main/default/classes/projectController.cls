@@ -44,7 +44,7 @@ public with sharing class projectController {
      @AuraEnabled (cacheable=true)
     public static List<Beneficio_di_Progetto__c>  getBenefits(){
     
-    return [select Name,CODICE_SDG__c from  Beneficio_di_Progetto__c  ];
+    return [select Id,CODICE_SDG__c from  Beneficio_di_Progetto__c  ];
 
     }
 
@@ -57,7 +57,15 @@ public with sharing class projectController {
         obene.Progetto__c = ParentId;
         lstprojbene.add(obene);
    }
-   update lstprojbene;
+   upsert lstprojbene;
  }
+
+@AuraEnabled
+public static List<ProgettoObiettivo__c>  getProjectBenefits(String projectId){
+  return [select  Obiettivo_di_Progetto__r.CODICE_SDG__c,Obiettivo_di_Progetto__r.Descrizione__c,
+       Obiettivo_di_Progetto__r.PREVALING__c,Obiettivo_di_Progetto__r.Expected_Benefit__c,
+       Obiettivo_di_Progetto__r.SECOND_SDG__c,Obiettivo_di_Progetto__r.THIRD_SDG__c,
+       Obiettivo_di_Progetto__r.Fourth_SDG__c from ProgettoObiettivo__c where progetto__c =:projectId];
+}
 
 }
