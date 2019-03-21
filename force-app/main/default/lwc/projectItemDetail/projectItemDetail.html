@@ -27,9 +27,9 @@
                                     <th class="" scope="col">
                                         <div class="slds-truncate" title="Prevaling">Prevaling</div>
                                     </th>
-                                    <th class="" scope="col">
+                                    <!-- <th class="" scope="col">
                                         <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
-                                    </th>
+                                    </th> -->
                                     <th class="" scope="col">
                                         <div class="slds-truncate" title="Expected Benefit">Expected Benefit</div>
                                     </th>
@@ -45,64 +45,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="slds-hint-parent">
-                                    <th data-label="Codice SDG" scope="row">
-                                        <div class="slds-truncate" title="Codice SDG"><a href="javascript:void(0);"
-                                                tabindex="-1">Cloudhub</a></div>
-                                    </th>
-                                    <td data-label="Descrizione">
-                                        <div class="slds-truncate" title="Descrizione">Cloudhub</div>
-                                    </td>
-                                    <td data-label="Prevaling">
-                                        <div class="slds-truncate" title="Prevaling">xxxxxxx</div>
-                                    </td>
-                                    <td data-label="Prevaling SDG">
-                                        <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
-                                    </td>
-                                    <td data-label="Expected Benefit">
-                                        <div class="slds-truncate" title="Expected Benefit">dddddd</div>
-                                    </td>
-                                    <td data-label="Second SDG">
-                                        <div class="slds-truncate" title="Second SDG">eeeeee</div>
-                                    </td>
-                                    <td data-label="Third SDG">
-                                        <div class="slds-truncate" title="Third SDG"><a href="javascript:void(0);"
-                                                tabindex="-1">ffffff</a></div>
-                                    </td>
-                                    <th data-label="Fourth SDG" scope="row">
-                                        <div class="slds-truncate" title="Fourth SDG"><a href="javascript:void(0);"
-                                                tabindex="-1">xxxsfgd</a></div>
-                                    </th>
-                                </tr>
-                                <tr class="slds-hint-parent">
-                                    <th data-label="Codice SDG" scope="row">
-                                        <div class="slds-truncate" title="Codice SDG"><a href="javascript:void(0);"
-                                                tabindex="-1">Cloudhub</a></div>
-                                    </th>
-                                    <td data-label="Descrizione">
-                                        <div class="slds-truncate" title="Descrizione">Cloudhub</div>
-                                    </td>
-                                    <td data-label="Prevaling">
-                                        <div class="slds-truncate" title="Prevaling">xxxxxxx</div>
-                                    </td>
-                                    <td data-label="Prevaling SDG">
-                                        <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
-                                    </td>
-                                    <td data-label="Expected Benefit">
-                                        <div class="slds-truncate" title="Expected Benefit">dddddd</div>
-                                    </td>
-                                    <td data-label="Second SDG">
-                                        <div class="slds-truncate" title="Second SDG">eeeeee</div>
-                                    </td>
-                                    <td data-label="Third SDG">
-                                        <div class="slds-truncate" title="Third SDG"><a href="javascript:void(0);"
-                                                tabindex="-1">ffffff</a></div>
-                                    </td>
-                                    <th data-label="Fourth SDG" scope="row">
-                                        <div class="slds-truncate" title="Fourth SDG"><a href="javascript:void(0);"
-                                                tabindex="-1">xxxsfgd</a></div>
-                                    </th>
-                                </tr>
+                          <template for:each={_benefits} for:item="benef">
+                            <tr key={benef.Id} class="slds-hint-parent">
+                                <th data-label="Codice SDG" scope="row">
+                                    <div class="slds-truncate" title="Codice SDG"><a href="javascript:void(0);"
+                                            tabindex="-1">{benef.Obiettivo_di_Progetto__r.CODICE_SDG__c}</a></div>
+                                </th>
+                                <td data-label="Descrizione">
+                                    <div class="slds-truncate" title="Descrizione">{benef.Obiettivo_di_Progetto__r.Descrizione__c}</div>
+                                </td>
+                                <td data-label="Prevaling">
+                                    <div class="slds-truncate" title="Prevaling"> {benef.Obiettivo_di_Progetto__r.PREVALING__c}</div>
+                                </td>
+                                <!-- <td data-label="Prevaling SDG">
+                                    <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
+                                </td> -->
+                                <td data-label="Expected Benefit">
+                                    <div class="slds-truncate" title="Expected Benefit"> {benef.Obiettivo_di_Progetto__r.Expected_Benefit__c}</div>
+                                </td>
+                                <td data-label="Second SDG">
+                                    <div class="slds-truncate" title="Second SDG"> {benef.Obiettivo_di_Progetto__r.SECOND_SDG__c} </div>
+                                </td>
+                                <td data-label="Third SDG">
+                                    <div class="slds-truncate" title="Third SDG">{benef.Obiettivo_di_Progetto__r.THIRD_SDG__c}<a href="javascript:void(0);"
+                                            tabindex="-1">ffffff</a></div>
+                                </td>
+                                <th data-label="Fourth SDG" scope="row">
+                                    <div class="slds-truncate" title="Fourth SDG"><a href="javascript:void(0);"
+                                            tabindex="-1"> {benef.Obiettivo_di_Progetto__r.Fourth_SDG__c} </a></div>
+                                </th>
+                            </tr>
+                          </template>
+                            
+                          
                             </tbody>
                         </table>
                     </template>

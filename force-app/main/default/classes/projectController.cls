@@ -60,7 +60,7 @@ public with sharing class projectController {
    upsert lstprojbene;
  }
 
-@AuraEnabled
+@AuraEnabled (cacheable=true)
 public static List<ProgettoObiettivo__c>  getProjectBenefits(String projectId){
   return [select  Obiettivo_di_Progetto__r.CODICE_SDG__c,Obiettivo_di_Progetto__r.Descrizione__c,
        Obiettivo_di_Progetto__r.PREVALING__c,Obiettivo_di_Progetto__r.Expected_Benefit__c,
