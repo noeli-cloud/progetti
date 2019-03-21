@@ -1,14 +1,34 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import getBenefits from '@salesforce/apex/projectController.getBenefits';
+
+import addProgettoBenefit from '@salesforce/apex/projectController.addProgettoBenefit';
+
+
+// import addParentBenefiq from '@salesforce/apex/NC_ProgettiEnel.addParentBenefiq';
+
 
 
 export default class ProjectItemNew extends LightningElement {
 
     @api recordTypeId;
-
+    @track options;
     objectInfo;
-    recordTypeOptions=[];
+    recordTypeOptions = [];
+    @wire(getBenefits)
+    getBenefits({ data, error }) {
+        if (data) {
+            debugger
+            this.options = data.map(d => {
+                return {
+                    label: d.Name,//+ (d.CODICE_SDG__c && d.CODICE_SDG__c),
+                    value: d.Name,
+                }
+            })
+
+        }
+    }
     @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
     getObjectInfo({ data, error }) {
         if (data) {
@@ -26,14 +46,26 @@ export default class ProjectItemNew extends LightningElement {
 
 
     handleSuccess(event) {
-        this.dispatchEvent(
-            new ShowToastEvent({
-                title: 'Success',
-                message: event.detail.apiName + ' created.',
-                variant: 'success',
-            }),
-        );
-        this.emitClose()
+        addProgettoBenefit({ ParentId: event.detail.Id, lstOfBenefiq: this.selectedBenefits })
+            .then(() => {
+
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: event.detail.apiName + ' created.',
+                        variant: 'success',
+                    }),
+                );
+                this.emitClose()
+            }).catch(error => {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Error',
+                        message: 'An Error Occurred when saving benefits.',
+                        variant: 'error',
+                    }),
+                );
+            })
     }
 
     emitClose() {
@@ -41,5 +73,9 @@ export default class ProjectItemNew extends LightningElement {
     }
     handleCancel() {
         this.emitClose()
+    }
+    @track selectedBenefits = [];
+    handleBenefitChange() {
+        this.selectedBenefits = e.detail.value;
     }
 }

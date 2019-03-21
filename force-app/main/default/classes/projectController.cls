@@ -40,4 +40,23 @@ public with sharing class projectController {
         update l ;
         
     }
+
+     @AuraEnabled (cacheable=true)
+    public static List<Beneficio_di_Progetto__c>  getBenefits(){
+    
+    return [select Name,CODICE_SDG__c from  Beneficio_di_Progetto__c  ];
+
+    }
+
+    public static void addProgettoBenefit(String ParentId , List<String> lstOfBenefiq){
+    list<ProgettoObiettivo__c> lstprojbene = new list<ProgettoObiettivo__c>();
+    for(string beneId : lstOfBenefiq){
+        ProgettoObiettivo__c obene = new ProgettoObiettivo__c();
+        obene.Obiettivo_di_Progetto__c = beneId;
+        obene.Progetto__c = ParentId;
+        lstprojbene.add(obene);
+   }
+   update lstprojbene;
+ }
+
 }
