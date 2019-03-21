@@ -1,33 +1,38 @@
 <template>
-        <!-- <div class="flexipageComponent list" data-aura-class="flexipageComponent"> -->
-        <div class="flexipageComponent list" data-aura-class="flexipageComponent">
-            <div class="tabset slds-tabs_card uiTabset--base uiTabset--default uiTabset--dense uiTabset flexipageTabset">
-                <lightning-tabset active-tab-value="one">
-                    <lightning-tab label="Projects" value="one">                      
-                        <!-- <c-project-item-new></c-project-item-new> -->
-                        
-                        <div class="slds-m-around_medium">
-                            <lightning-input
-                                type="search"
-                                onchange={search}
-                                class="slds-m-bottom_small"
-                                label="Search"
-                            ></lightning-input>
-                        </div>
-                        <div class="slds-scrollable_y" style="height: 30rem; ">
-                            <template for:each={projects.data} for:item="project">
-                                <c-project-item
-                                key={project.Id}
-                                data-project-id={project.Id}
-                                onclick={itemClick}            
-                                project={project}></c-project-item>
-                            
-                            </template>
-                        </div>
-                    </lightning-tab>
-                </lightning-tabset>
+        <div class="slds-card">
+            <div class="slds-card__header slds-grid">
+              <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                  <div class="slds-media__body">
+                  <h2 class="slds-card__header-title">
+                    <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+                      <span>Projects</span>
+                  </h2>
+                </div>
+                <div class="slds-no-flex">
+                  <c-new-button></c-new-button>
+                </div>
+              </header>
             </div>
-         </div>
-    
-         
-        </template>
+            <div class="slds-card__body slds-card__body_inner">
+                <div class="slds-m-around_medium">
+                    <lightning-input
+                        type="search"
+                        onchange={search}
+                        class="slds-m-bottom_small"
+                        label="Search"
+                    ></lightning-input>
+                </div>
+                <div class="slds-scrollable_y" style="height: 30rem; ">
+                    <template for:each={projects.data} for:item="project">
+                        <c-project-item
+                        key={project.Id}
+                        data-project-id={project.Id}
+                        onclick={itemClick}            
+                        project={project}></c-project-item>                            
+                    </template>
+                </div>
+            </div>
+            <footer class="slds-card__footer">
+            </footer>
+        </div>
+    </template>

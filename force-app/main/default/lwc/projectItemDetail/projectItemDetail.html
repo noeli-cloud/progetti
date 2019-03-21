@@ -5,13 +5,104 @@
             <lightning-tabset active-tab-value="one">
                 <lightning-tab label="Project Detail" value="one">                      
                     <template if:true={projectId}>
-                            <lightning-record-form
+                        <lightning-record-form
                             record-id={projectId}
                             object-api-name="Progetto__c"
                             layout-type="Full"
                             mode={mode}
                             columns="2">
                         </lightning-record-form>
+                    </template>
+                    <template if:false={projectId}>
+                        NO PROJECT SELECTED
+                    </template>
+                </lightning-tab>
+                <lightning-tab label="Benefit" value="two">                      
+                    <template if:true={projectId}>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Codice SDG">Codice SDG</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Descrizione">Descrizione</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Prevaling">Prevaling</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Expected Benefit">Expected Benefit</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Second SDG">Second SDG</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Third SDG">Third SDG</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Fourth SDG">Fourth SDG</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="slds-hint-parent">
+                            <th data-label="Codice SDG" scope="row">
+                            <div class="slds-truncate" title="Codice SDG"><a href="javascript:void(0);" tabindex="-1">Cloudhub</a></div>
+                            </th>
+                            <td data-label="Descrizione">
+                            <div class="slds-truncate" title="Descrizione">Cloudhub</div>
+                            </td>
+                            <td data-label="Prevaling">
+                            <div class="slds-truncate" title="Prevaling">xxxxxxx</div>
+                            </td>
+                            <td data-label="Prevaling SDG">
+                            <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
+                            </td>
+                            <td data-label="Expected Benefit">
+                            <div class="slds-truncate" title="Expected Benefit">dddddd</div>
+                            </td>
+                            <td data-label="Second SDG">
+                            <div class="slds-truncate" title="Second SDG">eeeeee</div>
+                            </td>
+                            <td data-label="Third SDG">
+                            <div class="slds-truncate" title="Third SDG"><a href="javascript:void(0);" tabindex="-1">ffffff</a></div>
+                            </td>
+                            <th data-label="Fourth SDG" scope="row">
+                            <div class="slds-truncate" title="Fourth SDG"><a href="javascript:void(0);" tabindex="-1">xxxsfgd</a></div>
+                            </th>
+                            </tr>
+                            <tr class="slds-hint-parent">
+                            <th data-label="Codice SDG" scope="row">
+                            <div class="slds-truncate" title="Codice SDG"><a href="javascript:void(0);" tabindex="-1">Cloudhub</a></div>
+                            </th>
+                            <td data-label="Descrizione">
+                            <div class="slds-truncate" title="Descrizione">Cloudhub</div>
+                            </td>
+                            <td data-label="Prevaling">
+                            <div class="slds-truncate" title="Prevaling">xxxxxxx</div>
+                            </td>
+                            <td data-label="Prevaling SDG">
+                            <div class="slds-truncate" title="Prevaling SDG">Prevaling SDG</div>
+                            </td>
+                            <td data-label="Expected Benefit">
+                            <div class="slds-truncate" title="Expected Benefit">dddddd</div>
+                            </td>
+                            <td data-label="Second SDG">
+                            <div class="slds-truncate" title="Second SDG">eeeeee</div>
+                            </td>
+                            <td data-label="Third SDG">
+                            <div class="slds-truncate" title="Third SDG"><a href="javascript:void(0);" tabindex="-1">ffffff</a></div>
+                            </td>
+                            <th data-label="Fourth SDG" scope="row">
+                            <div class="slds-truncate" title="Fourth SDG"><a href="javascript:void(0);" tabindex="-1">xxxsfgd</a></div>
+                            </th>
+                            </tr>
+                            </tbody>
+                        </table>
                     </template>
                     <template if:false={projectId}>
                         NO PROJECT SELECTED
