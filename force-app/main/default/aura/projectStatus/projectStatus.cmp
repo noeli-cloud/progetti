@@ -1,16 +1,15 @@
-<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
     controller="projectController">
     <c:auraPubsub aura:id="pubsub" onready="{!c.handlePubsubReady}" />
-
     <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}" />
-    
-    <!-- <lightning:picklistPath aura:id="picklistPath" recordId="{! v.recordId}" variant="non-linear"
-        picklistFieldApiName="WORKFLOW_STATUS_GLOBAL__c" onselect="{!c.handleSelect}">
-    </lightning:picklistPath> -->
 
-    <lightning:picklistPath aura:id="picklistPath" recordId="a031i0000056pfhAAA" variant="non-linear"
-        picklistFieldApiName="WORKFLOW_STATUS_GLOBAL__c" onselect="{!c.handleSelect}">
-    </lightning:picklistPath>
+    <aura:attribute name="recordId" type="string" />
+
+    <aura:if isTrue="{!v.recordId}">
+        <lightning:picklistPath aura:id="picklistPath" recordId="{!v.recordId}" variant="non-linear"
+            picklistFieldApiName="WORKFLOW_STATUS_GLOBAL__c" onselect="{!c.handleSelect}">
+        </lightning:picklistPath>
+    </aura:if>
 
 
 </aura:component>

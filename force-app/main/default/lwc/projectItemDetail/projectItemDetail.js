@@ -22,8 +22,8 @@ export default class ProjectItemDetail extends LightningElement {
 
     connectedCallback() {
         registerListener('projectselected', this.handleProjectSelected, this);
-        // alert('max 7.36')
-            console.log('max 8.0')
+        alert('max 8.13')
+            console.log('max 8.12')
     }
 
     disconnectedCallback() {
