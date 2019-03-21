@@ -1,6 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import getProjects from '@salesforce/apex/projectController.getProjects';
-import {  fireEvent } from 'c/pubsub';
+import { fireEvent } from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
 
 
@@ -14,8 +14,9 @@ export default class ProjectItemList extends LightningElement {
     @wire(getProjects, { searchKey: '$searchKey' })
     projects;
 
+    @track selected;
     itemClick(event) {
-
+        this.selected = event.currentTarget.dataset.projectId
         fireEvent(this.pageRef, 'projectselected', event.currentTarget.dataset.projectId);
     }
 

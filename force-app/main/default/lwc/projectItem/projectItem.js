@@ -7,25 +7,30 @@ import getRecordTypeName from '@salesforce/apex/projectController.getRecordTypeN
 export default class ProjectItem extends LightningElement {
 
     @api project;
- 
+    @api Selected;
     @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
     objectInfo;
 
-    @wire(getRecordTypeName, { objectApiName: 'Progetto__c', recordTypeId:'$recordTypeId'}) recordTypeNameResult;
+    @wire(getRecordTypeName, { objectApiName: 'Progetto__c', recordTypeId: '$recordTypeId' }) recordTypeNameResult;
 
-    click(){
+    click() {
         debugger
         console.log(this.recordTypeNameResult)
     }
 
-    get recordTypeName(){
+    get recordTypeName() {
         return this.recordTypeNameResult && this.recordTypeNameResult.data
     }
 
-    get recordTypeId(){
+    get recordTypeId() {
         return this.project && this.project.recordTypeId
     }
-
+    get selectedStyle() {
+        if (this.Selected === (this.project && this.project.Id)) {
+            return "background-color: #dad4d447;"
+        }
+        return ''
+    }
     // get recordTypeId() {
     //     debugger;
     //     // console.log(ACCOUNT_OBJECT)
