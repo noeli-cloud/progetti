@@ -16,13 +16,93 @@
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-5">
                     <div class="slds-p-around_medium lgc-bg">
-                        <div class="new-project">
-                            <lightning-record-form record-type-id={recordTypeId}
-                                object-api-name="Progetto__c" layout-type="Full"
-                                 onsuccess={handleSuccess} oncancel={handleCancel}
-                                columns="2">
-                            </lightning-record-form>
-                        </div>
+                        <lightning-tabset active-tab-value="one">
+                            <lightning-tab label="Project" value="one">                      
+                                <lightning-messages></lightning-messages>
+                                <div class="new-project">
+                                    <lightning-record-form record-type-id={recordTypeId}
+                                        object-api-name="Progetto__c" layout-type="Full"
+                                        onsuccess={handleSuccess} oncancel={handleCancel}
+                                        columns="2">
+                                    </lightning-record-form>
+                                </div>
+                            </lightning-tab>
+                            <lightning-tab label="Benefit" value="three">                      
+                                    <div class="slds-form-element" role="group" aria-labelledby="picklist-group-label">
+                                        <span id="picklist-group-label" class="slds-form-element__label slds-form-element__legend">Select the project Benefits</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-dueling-list">
+                                                <div class="slds-assistive-text" id="drag-live-region" aria-live="assertive"></div>
+                                                <div class="slds-assistive-text" id="option-drag-label">Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.</div>
+                                                <div class="slds-dueling-list__column">
+                                                    <span class="slds-form-element__label" id="label-5">Available Benefits</span>
+                                                    <div class="slds-dueling-list__options">
+                                                    <ul aria-describedby="option-drag-label" aria-labelledby="label-5" aria-multiselectable="true" class="slds-listbox slds-listbox_vertical" role="listbox">
+                                                        <li role="presentation" class="slds-listbox__item">
+                                                        <div class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" aria-selected="false" draggable="true" role="option" tabindex="0">
+                                                            <span class="slds-media__body">
+                                                            <span class="slds-truncate" title="Option 1">Option 1</span>
+                                                            </span>
+                                                        </div>
+                                                        </li>
+                                                        <li role="presentation" class="slds-listbox__item">
+                                                        <div class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" aria-selected="false" draggable="true" role="option" tabindex="-1">
+                                                            <span class="slds-media__body">
+                                                            <span class="slds-truncate" title="Option 2">Option 2</span>
+                                                            </span>
+                                                        </div>
+                                                        </li>
+                                                        <li role="presentation" class="slds-listbox__item">
+                                                        <div class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" aria-selected="false" draggable="true" role="option" tabindex="-1">
+                                                            <span class="slds-media__body">
+                                                            <span class="slds-truncate" title="Option 3">Option 3</span>
+                                                            </span>
+                                                        </div>
+                                                        </li>
+                                                    </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-dueling-list__column">
+                                                    <button class="slds-button slds-button_icon slds-button_icon-container" title="Move Benefits to the project">
+                                                    <svg class="slds-button__icon" aria-hidden="true">
+                                                        <!-- <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#right" /> -->
+        
+                                                    </svg>
+                                                    <span class="slds-assistive-text">Select Benefits to the project</span>
+                                                    </button>
+                                                    <button class="slds-button slds-button_icon slds-button_icon-container" title="Move Selection to First Category">
+                                                    <svg class="slds-button__icon" aria-hidden="true">
+                                                        <!-- <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#left" /> -->
+                                                    </svg>
+                                                    <span class="slds-assistive-text">Unselect Benefit to the project</span>
+                                                    </button>
+                                                </div>
+                                                <div class="slds-dueling-list__column">
+                                                    <span class="slds-form-element__label" id="label-6">Benefit Assigned</span>
+                                                    <div class="slds-dueling-list__options">
+                                                    <ul aria-describedby="option-drag-label" aria-labelledby="label-6" aria-multiselectable="true" class="slds-listbox slds-listbox_vertical" role="listbox">
+                                                        <li role="presentation" class="slds-listbox__item">
+                                                        <div class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" aria-selected="false" draggable="true" role="option" tabindex="0">
+                                                            <span class="slds-media__body">
+                                                            <span class="slds-truncate" title="Option 4">Option 4</span>
+                                                            </span>
+                                                        </div>
+                                                        </li>
+                                                        <li role="presentation" class="slds-listbox__item">
+                                                        <div class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline" aria-selected="false" draggable="true" role="option" tabindex="-1">
+                                                            <span class="slds-media__body">
+                                                            <span class="slds-truncate" title="Option 5">Option 5</span>
+                                                            </span>
+                                                        </div>
+                                                        </li>
+                                                    </ul>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                            </lightning-tab>                   
+                     </lightning-tabset >
                     </div>
                 </div>
                 <!-- <footer class="slds-modal__footer">
