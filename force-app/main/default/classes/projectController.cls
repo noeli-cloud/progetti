@@ -32,4 +32,12 @@ public with sharing class projectController {
     return Schema.getGlobalDescribe().get('Progetto__c').getDescribe()
      .getRecordTypeInfosById().get('0121i000000CpGzAAK').getName(); 
     }
+
+     @AuraEnabled
+    public static void updateStage(String projectStatus , String projectId){
+        Lead l = [Select Id ,WORKFLOW_STATUS_GLOBAL__c from Progetto__c where Id=:projectId] ; 
+        l.WORKFLOW_STATUS_GLOBAL__c =projectStatus ; 
+        update l ;
+        
+    }
 }

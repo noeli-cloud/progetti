@@ -19,25 +19,25 @@
 
     handleSelect: function (component, event, helper) {
         debugger
-        // var stepName = event.getParam("detail").value;
-        // console.log(stepName);
-        // console.log(component.get("v.recordId"));
-        // var action = component.get("c.updateStage");
-        // action.setParams({ leadStatus: stepName, recordId: component.get("v.recordId") });
-        // action.setCallback(this, function (response) {
-        //     var state = response.getState();
-        //     if (state === "SUCCESS") {
-        //         var toastEvent = $A.get("e.force:showToast");
-        //         if (state === 'SUCCESS') {
-        //             toastEvent.setParams({
-        //                 "title": "Success!",
-        //                 "message": " Status is Update Succesfully !."
-        //             });
-        //         }
-        //         toastEvent.fire();
-        //         $A.get('e.force:refreshView').fire();
-        //     }
-        // });
-        // $A.enqueueAction(action);
+        var stepName = event.getParam("detail").value;
+        console.log(stepName);
+        console.log(component.get("v.recordId"));
+        var action = component.get("c.updateStage");
+        action.setParams({ projectStatus: stepName, projectId: component.get("v.projectId") });
+        action.setCallback(this, function (response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var toastEvent = $A.get("e.force:showToast");
+                if (state === 'SUCCESS') {
+                    toastEvent.setParams({
+                        "title": "Success!",
+                        "message": " Status is Updated Succesfully !."
+                    });
+                }
+                toastEvent.fire();
+                $A.get('e.force:refreshView').fire();
+            }
+        });
+        $A.enqueueAction(action);
     }
 });

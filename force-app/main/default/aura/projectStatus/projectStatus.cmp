@@ -1,4 +1,5 @@
-<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+controller="projectController">
     <aura:attribute name="projectId" type="Id" />
 
     <c:auraPubsub aura:id="pubsub" onready="{!c.handlePubsubReady}" />
@@ -9,7 +10,7 @@
         picklistFieldApiName="Status_Provenienza__c	" onselect="{!c.handleSelect}">
     </lightning:picklistPath> -->
 
-    <lightning:picklistPath aura:id="picklistPath" recordId="a031i0000056pfiAAA" variant="non-linear"
+    <lightning:picklistPath aura:id="picklistPath" recordId="{!v.projectId}" variant="non-linear"
         picklistFieldApiName="WORKFLOW_STATUS_GLOBAL__c" onselect="{!c.handleSelect}">
     </lightning:picklistPath>
 </aura:component>
