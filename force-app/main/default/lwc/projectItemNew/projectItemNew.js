@@ -15,6 +15,7 @@ export default class ProjectItemNew extends LightningElement {
     @api recordTypeId;
     @track options;
     objectInfo;
+    _selectedBenefits;
     recordTypeOptions = [];
     @wire(getBenefits)
     getBenefits({ data, error }) {
@@ -46,26 +47,28 @@ export default class ProjectItemNew extends LightningElement {
 
 
     handleSuccess(event) {
-        addProgettoBenefit({ ParentId: event.detail.Id, lstOfBenefiq: this.selectedBenefits })
-            .then(() => {
+        addProgettoBenefit({
+            ParentId: event.detail.id,
+            lstOfBenefiq: this._selectedBenefits
+        }).then(() => {
 
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Success',
-                        message: event.detail.apiName + ' created.',
-                        variant: 'success',
-                    }),
-                );
-                this.emitClose()
-            }).catch(error => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error',
-                        message: 'An Error Occurred when saving benefits.',
-                        variant: 'error',
-                    }),
-                );
-            })
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: event.detail.apiName + ' created.',
+                    variant: 'success',
+                }),
+            );
+            this.emitClose()
+        }).catch(error => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'An Error Occurred when saving benefits.',
+                    variant: 'error',
+                }),
+            );
+        })
     }
 
     emitClose() {
@@ -74,8 +77,8 @@ export default class ProjectItemNew extends LightningElement {
     handleCancel() {
         this.emitClose()
     }
-    @track selectedBenefits = [];
-    handleBenefitChange() {
-        this.selectedBenefits = e.detail.value;
+    handleBenefitChange(e) {
+        this._selectedBenefits = e.detail.value.map(v => v);
+        debugger
     }
 }

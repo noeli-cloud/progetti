@@ -48,6 +48,7 @@ public with sharing class projectController {
 
     }
 
+     @AuraEnabled
     public static void addProgettoBenefit(String ParentId , List<String> lstOfBenefiq){
     list<ProgettoObiettivo__c> lstprojbene = new list<ProgettoObiettivo__c>();
     for(string beneId : lstOfBenefiq){
