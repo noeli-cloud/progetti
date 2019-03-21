@@ -4,6 +4,8 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getBenefits from '@salesforce/apex/projectController.getBenefits';
 
 import addProgettoBenefit from '@salesforce/apex/projectController.addProgettoBenefit';
+import { fireEvent } from 'c/pubsub';
+import { CurrentPageReference } from 'lightning/navigation';
 
 
 // import addParentBenefiq from '@salesforce/apex/NC_ProgettiEnel.addParentBenefiq';
@@ -12,6 +14,7 @@ import addProgettoBenefit from '@salesforce/apex/projectController.addProgettoBe
 
 export default class ProjectItemNew extends LightningElement {
 
+    @wire(CurrentPageReference) pageRef;
     @api recordTypeId;
     @track options;
     objectInfo;
@@ -51,7 +54,7 @@ export default class ProjectItemNew extends LightningElement {
             ParentId: event.detail.id,
             lstOfBenefiq: this._selectedBenefits
         }).then(() => {
-
+            fireEvent(this.pageRef, 'projectselected',event.detail.id);
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Success',
