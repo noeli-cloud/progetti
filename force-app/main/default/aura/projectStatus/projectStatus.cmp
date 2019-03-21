@@ -10,6 +10,6 @@
     </lightning:picklistPath> -->
 
     <lightning:picklistPath aura:id="picklistPath" recordId="a031i0000056pfiAAA" variant="non-linear"
-        picklistFieldApiName="Status_Provenienza__c	" onselect="{!c.handleSelect}">
+        picklistFieldApiName="WORKFLOW_STATUS_GLOBAL__c" onselect="{!c.handleSelect}">
     </lightning:picklistPath>
 </aura:component>
