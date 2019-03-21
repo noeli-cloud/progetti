@@ -1,5 +1,6 @@
 ({
     handlePubsubReady: function(component) {
+        debugger
         var pubsub = component.find('pubsub');
         var callback = $A.getCallback(function(projectId) {
             component.set('v.projectId', projectId);
@@ -11,6 +12,7 @@
     },
 
     handleDestroy: function(component) {
+        debugger
         var pubsub = component.find('pubsub');
         pubsub.unregisterAllListeners();
     },
