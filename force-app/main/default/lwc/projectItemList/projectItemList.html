@@ -22,28 +22,11 @@
             </div>
           </header>
         </div>
-        <div class="slds-card__body slds-card__body_inner">
-            <div class="slds-m-around_medium">
-                <lightning-input
-                    type="search"
-                    onchange={search}
-                    class="slds-m-bottom_small"
-                    label="Search"
-                ></lightning-input>
-            </div>
-            <div class="slds-scrollable_y" style="height: 30rem; ">
-                <template for:each={projects.data} for:item="project">
-                    <c-project-item
-                    key={project.Id}
-                    data-project-id={project.Id}
-                    onclick={itemClick}            
-                    project={project}></c-project-item>
-                
-                </template>
-            </div>
-
-        </div>
-        <footer class="slds-card__footer">          
+        <div class="slds-card__body slds-card__body_inner">Anything can go in the Card Body</div>
+        <footer class="slds-card__footer">
+            <a class="slds-card__footer-action" href="javascript:void(0);">View All
+            <span class="slds-assistive-text">Accounts</span>
+            </a>
         </footer>
     </div>
 </template>

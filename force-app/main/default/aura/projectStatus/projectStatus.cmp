@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="projectId" type="Id" />
+
+    <c:auraPubsub aura:id="pubsub" onready="{!c.handlePubsubReady}" />
+
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}" />
+
+    <!-- <lightning:picklistPath aura:id="picklistPath" recordId="{!v.projectId}" variant="non-linear"
+        picklistFieldApiName="Status_Provenienza__c	" onselect="{!c.handleSelect}">
+    </lightning:picklistPath> -->
+
+    <lightning:picklistPath aura:id="picklistPath" recordId="a031i0000056pfiAAA" variant="non-linear"
+        picklistFieldApiName="Status_Provenienza__c	" onselect="{!c.handleSelect}">
+    </lightning:picklistPath>
+</aura:component>
