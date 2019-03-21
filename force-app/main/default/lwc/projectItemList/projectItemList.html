@@ -5,7 +5,7 @@
                   <div class="slds-media__body">
                   <h2 class="slds-card__header-title">
                     <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
-                      <span>Projects</span>
+                      <span> All Projects</span>
                   </h2>
                 </div>
                 <div class="slds-no-flex">
@@ -22,7 +22,7 @@
                         label="Search"
                     ></lightning-input>
                 </div>
-                <div class="slds-scrollable_y" style="height: 30rem; ">
+                <div class="slds-scrollable_y" style="height: 40rem; ">
                     <template for:each={projects.data} for:item="project">
                         <c-project-item
                         key={project.Id}
