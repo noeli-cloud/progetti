@@ -3,7 +3,7 @@
         debugger
         var pubsub = component.find('pubsub');
         var callback = $A.getCallback(function (projectId) {
-            component.set('v.projectId', projectId);
+            component.set('v.recordId', projectId);
             var picklistPath = component.find('picklistPath');
             debugger
             // service.reloadRecord();
@@ -23,7 +23,7 @@
         console.log(stepName);
         console.log(component.get("v.recordId"));
         var action = component.get("c.updateStage");
-        action.setParams({ projectStatus: stepName, projectId: component.get("v.projectId") });
+        action.setParams({ projectStatus: stepName, projectId: component.get("v.recordId") });
         action.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {

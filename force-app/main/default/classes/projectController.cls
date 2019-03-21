@@ -35,7 +35,7 @@ public with sharing class projectController {
 
      @AuraEnabled
     public static void updateStage(String projectStatus , String projectId){
-        Lead l = [Select Id ,WORKFLOW_STATUS_GLOBAL__c from Progetto__c where Id=:projectId] ; 
+        Progetto__c l = [Select Id ,WORKFLOW_STATUS_GLOBAL__c from Progetto__c where Id=:projectId] ; 
         l.WORKFLOW_STATUS_GLOBAL__c =projectStatus ; 
         update l ;
         
