@@ -14,9 +14,9 @@ export default class ProjectItemList extends LightningElement {
     @wire(getProjects, { searchKey: '$searchKey' })
     projects;
 
-    @track selected;
+    @track selectedId;
     itemClick(event) {
-        this.selected = event.currentTarget.dataset.projectId
+        this.selectedId = event.currentTarget.dataset.projectId
         fireEvent(this.pageRef, 'projectselected', event.currentTarget.dataset.projectId);
     }
 

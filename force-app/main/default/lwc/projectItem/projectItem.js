@@ -1,4 +1,5 @@
-import { LightningElement, wire, api/*, track*/ } from 'lwc';
+import { LightningElement, wire, api,/*, track*/ 
+track} from 'lwc';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 // import ACCOUNT_OBJECT from '@salesforce/schema/Progetto__c';
 import getRecordTypeName from '@salesforce/apex/projectController.getRecordTypeName';
@@ -7,7 +8,7 @@ import getRecordTypeName from '@salesforce/apex/projectController.getRecordTypeN
 export default class ProjectItem extends LightningElement {
 
     @api project;
-    @api Selected;
+    @api selectedId;
     @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
     objectInfo;
 
@@ -25,8 +26,8 @@ export default class ProjectItem extends LightningElement {
     get recordTypeId() {
         return this.project && this.project.recordTypeId
     }
-    get selectedStyle() {
-        if (this.Selected === (this.project && this.project.Id)) {
+    get selectedStyleText() {
+        if (this.selectedId === (this.project && this.project.Id)) {
             return "background-color: #dad4d447;"
         }
         return ''
