@@ -12,11 +12,11 @@ public with sharing class projectController {
     public static List<Progetto__c> getProjects(String searchKey) {
 
     if (String.isBlank(searchKey)) {
-        return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c  ];
+        return [SELECT Id, Name,Title__c, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c  ];
     }
     String key = '%' + searchKey + '%';   
 
-    return [SELECT Id, Name, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c WHERE Name LIKE :key  ];
+    return [SELECT Id, Name,Title__c, Category__c,RecordTypeId,Country__c,OwnerId from Progetto__c WHERE Title__c LIKE :key  ];
     }
 
     @AuraEnabled (cacheable=true)

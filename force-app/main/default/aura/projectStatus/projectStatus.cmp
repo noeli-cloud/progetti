@@ -1,9 +1,9 @@
-<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome, force:hasRecordId"
     controller="projectController">
     <c:auraPubsub aura:id="pubsub" onready="{!c.handlePubsubReady}" />
     <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}" />
 
-    <aura:attribute name="recordId" type="string" />
+    <!-- <aura:att  ribute name="recordId" type="string" /> -->
 
     <aura:if isTrue="{!v.recordId}">
         <lightning:picklistPath aura:id="picklistPath" recordId="{!v.recordId}" variant="non-linear"
