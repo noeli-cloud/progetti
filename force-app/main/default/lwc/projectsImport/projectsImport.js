@@ -1,29 +1,33 @@
 import { LightningElement, track, api, wire } from 'lwc';
 import insertRecords from '@salesforce/apex/NC_ProgettiEnel.insertRecords';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+// import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class ProjectsImport extends LightningElement {
 
-    @api recordTypeId;
+    // @api recordTypeId;
 
 
     @track fileName;
     @track strfromJson;
 
     objectInfo;
-    recordTypeOptions=[];
+    // recordTypeOptions=[];
 
-    @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
-    getObjectInfo({ data, error }) {
-        if (data) {
-            this.objectInfo = data
-            this.recordTypeOptions = Object.values(this.objectInfo.recordTypeInfos)
-                .filter(r => !r.master).map(r => ({ label: r.name, value: r.recordTypeId }))
-        }
+    // @wire(getObjectInfo, { objectApiName: 'Progetto__c' })
+    // getObjectInfo({ data, error }) {
+    //     if (data) {
+    //         this.objectInfo = data
+    //         this.recordTypeOptions = Object.values(this.objectInfo.recordTypeInfos)
+    //             .filter(r => !r.master).map(r => ({ label: r.name, value: r.recordTypeId }))
+    //     }
 
+    // }
+
+    constructor(...arg){
+        super(...arg)
+        // alert('im 2.2')
     }
-
 
     handleFileChange(event) {
         const input = event.target;
@@ -68,7 +72,7 @@ export default class ProjectsImport extends LightningElement {
 
 
     saveImportMethod() {
-        insertRecords({ strfromJson: this.strfromJson, recortypeId: this.recordTypeId })
+        insertRecords({ strfromJson: this.strfromJson/*, recortypeId: this.recordTypeId */ })
             .then(result => {
                 this.dispatchEvent(
                     new ShowToastEvent({
@@ -91,10 +95,10 @@ export default class ProjectsImport extends LightningElement {
 
     }
 
-    get recordTypeName() {
-        let rc = this.recordTypeOptions.find(o => o.value === this.recordTypeId)
-        return rc && rc.label || ''
-    }
+    // get recordTypeName() {
+    //     let rc = this.recordTypeOptions.find(o => o.value === this.recordTypeId)
+    //     return rc && rc.label || ''
+    // }
 
     emitClose() {
         this.dispatchEvent(new CustomEvent('close'));

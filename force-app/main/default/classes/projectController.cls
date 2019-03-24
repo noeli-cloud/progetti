@@ -68,4 +68,11 @@ public static List<ProgettoObiettivo__c>  getProjectBenefits(String projectId){
        Obiettivo_di_Progetto__r.Fourth_SDG__c from ProgettoObiettivo__c where progetto__c =:projectId];
 }
 
+
+@AuraEnabled (cacheable=true)
+public static List<Progetto__c>  getCountByCountry(){
+  return [SELECT country__c,count(Name) FROM Progetto__c group by country__c];
+}
+
+
 }

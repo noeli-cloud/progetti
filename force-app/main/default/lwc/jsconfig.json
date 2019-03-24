@@ -6,6 +6,9 @@
             "c/aura-pubsub": [
                 "auraPubsub/auraPubsub.js"
             ],
+            "c/nc-project-map": [
+                "ncProjectMap/ncProjectMap.js"
+            ],
             "c/new-button": [
                 "newButton/newButton.js"
             ],

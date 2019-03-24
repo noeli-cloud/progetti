@@ -5,15 +5,16 @@ import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 import { CurrentPageReference } from 'lightning/navigation';
 
-import updateListView from '@salesforce/apex/ui.force.components.controllers.lists.listViewManagerController.updateListView';
+import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 
 
 export default class ProjectItemDetail extends LightningElement {
 
-    @wire(updateListView, { "entityKeyPrefixOrApiName": "Progetto__c", "listViewIdOrName": "00B1i000000ZAhBEAW", "label": null, "visibility": null, "displayColumnApiNames": null, "listViewFieldCriteria": [{ "column": "Country__c", "label": "Country", "operator": "EQUALS", "operands": ["Italy"], "dataType": "picklist", "picklistValues": [{ "value": "Argentina", "label": "Argentina" }, { "value": "Brazil", "label": "Brazil" }, { "value": "Chile", "label": "Chile" }, { "value": "Colombia", "label": "Colombia" }, { "value": "Italy", "label": "Italy" }, { "value": "Peru", "label": "Peru" }, { "value": "Portugal", "label": "Portugal" }, { "value": "Russia", "label": "Russia" }, { "value": "Spain", "label": "Spain" }, { "value": "Iberia", "label": "Iberia" }], "supportedOperators": ["EQUALS", "NOT_EQUAL", "LESS_THAN", "GREATER_THAN", "LESS_OR_EQUAL", "GREATER_OR_EQUAL", "CONTAINS", "NOT_CONTAIN", "STARTS_WITH"], "id": 0, "isEditable": true, "entityKeyPrefixOrApiName": "Progetto__c", "hasBeenEdited": true }], "listViewScope": { "apiName": "everything", "label": "All progetti" }, "booleanFilterLogic": "", "shareIds": null })
-    updateListView({ data, error }) {
+    @wire(getObjectInfo,  { objectApiName: 'ListView' })
+    getObjectInfo({ data, error }) {
         debugger
         console.log(data,error)
+        console.log(getObjectInfo)
     }
 
     @track projectId;
@@ -29,7 +30,7 @@ export default class ProjectItemDetail extends LightningElement {
 
     connectedCallback() {
         registerListener('projectselected', this.handleProjectSelected, this);
-        alert('max 9.0')
+        // alert('max 9.0')
         console.log('max 8.12')
     }
 
