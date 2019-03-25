@@ -2,7 +2,7 @@ import { LightningElement, wire } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import LEAFTLET_JS from '@salesforce/resourceUrl/leaflet';
 import { NavigationMixin } from 'lightning/navigation';
-import getCountByCountry from '@salesforce/apex/ProjectController.getCountByCountry';
+import getCountByCountry from '@salesforce/apex/projectController.getCountByCountry';
 import mapData from './mapData'
 
 export default class NcMap extends NavigationMixin(LightningElement) {
