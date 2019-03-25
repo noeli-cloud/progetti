@@ -1,28 +1,35 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire, track } from 'lwc';
+import getCountByCountry from '@salesforce/apex/ProjectController.getCountByCountry';
+
+
 
 export default class NcProjectMap extends LightningElement {
 
-    mapMarkers = [
-        {
-            location: {
-                Country: 'Italy',                     
-            },
+    @track
+    mapMarkers = [];
 
-            title: 'Cameroon (2)',
-           },
-           {
-            location: {
-                Country: 'Chile',                     
-            },
+    // constructor(...arg) {
+    //     super(...arg)
+    //     // alert('map 1.10')
+    // }
 
-            title: 'Cameroon',
-           },
-            {
-            location: {
-                Country: 'Brasil',                     
-            },
+    connectedCallback() {
 
-            title: 'Cameroon',
-           },
-    ];
+    }
+
+    @wire(getCountByCountry)
+    getCountByCountry({ data, error }) {
+        if (data) {
+            this.mapMarkers = data.map(({ Country__c, expr0: count }) => ({
+                location: {
+                    Country: Country__c,
+                },
+
+                title: `${Country__c} (${count})`,
+                description1: ``
+            }));
+        }
+    }
+
+
 }

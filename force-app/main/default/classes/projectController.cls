@@ -70,7 +70,7 @@ public static List<ProgettoObiettivo__c>  getProjectBenefits(String projectId){
 
 
 @AuraEnabled (cacheable=true)
-public static List<Progetto__c>  getCountByCountry(){
+public static List<AggregateResult>  getCountByCountry(){
   return [SELECT country__c,count(Name) FROM Progetto__c group by country__c];
 }
 
